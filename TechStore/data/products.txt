@@ -1,0 +1,3 @@
+Tent,1,Party tent,99,99,true,8,5,4,true
+Tent,2,Techno Tent,79,99,false,15,10,4,false
+Tent,3,Family Tent,109,99,true,20,10,6,true
