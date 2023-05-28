@@ -3,7 +3,7 @@ package Categories.PhonesSubsection;
 import Categories.Product;
 
 public class MobilePhones extends Product {
-    private String brand;
+    private final String brand;
 
     public MobilePhones(int id, String name, double price, boolean isDiscounted, String brand, int quantityInStore, int quantityInWarehouse, int quantitySold) {
         super(id, name, price, isDiscounted, quantityInStore, quantityInWarehouse, quantitySold);

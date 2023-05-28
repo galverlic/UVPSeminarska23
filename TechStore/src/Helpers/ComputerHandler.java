@@ -74,8 +74,7 @@ public class ComputerHandler {
         System.out.println("******* Buy a laptop *******");
         for (int i = 0; i < laptops.size(); i++){
             System.out.println(((i + 1) + ". " + laptops.get(i).getName() + ", Price: " + laptops.get(i).getPrice() + ", Storage space: " + laptops.get(i).getStorageSpace() +
-                    ", Discounted: " + laptops.get(i).getIsDiscounted() + ", Quantity in store: " + laptops.get(i).getQuantityInStore() + ", Quantity in warehouse: " + laptops.get(i).getQuantityInWarehouse() +
-                    ""));
+                    ", Discounted: " + laptops.get(i).getIsDiscounted() + ", Quantity in store: " + laptops.get(i).getQuantityInStore() + ", Quantity in warehouse: " + laptops.get(i).getQuantityInWarehouse()));
         }
         System.out.println("Enter the number of the laptop you want to purchase:  ");
         int laptopNumber = scanner.nextInt() - 1;

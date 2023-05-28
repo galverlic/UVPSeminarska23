@@ -4,7 +4,7 @@ import Categories.Product;
 
 public class PhoneCases extends Product {
 
-    private String color;
+    private final String color;
     public PhoneCases(int id, String name, double price, boolean isDiscounted, String color, int quantityInStore, int quantityInWarehouse, int quantitySold) {
         super(id, name, price, isDiscounted, quantityInStore, quantityInWarehouse, quantitySold);
         this.color = color;

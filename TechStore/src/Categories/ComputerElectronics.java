@@ -1,9 +1,9 @@
 package Categories;
 
 public class ComputerElectronics {
-    private String Laptops;
-    private String PCs;
-    private String Printers;
-    private String Droids;
-    private String Monitors;
+    private String Laptop;
+    private String PC;
+    private String Printer;
+    private String Droid;
+    private String Monitor;
 }

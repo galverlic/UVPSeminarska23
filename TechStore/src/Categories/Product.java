@@ -12,8 +12,8 @@ import java.util.List;
 
 public abstract class Product {
     private final int id;
-    private String name;
-    private double price;
+    private final String name;
+    private final double price;
     private boolean isDiscounted;
     private int quantityInStore;
     private int quantityInWarehouse;
@@ -51,7 +51,7 @@ public abstract class Product {
             for (Product product : products) {
                 if (product instanceof Tent tent) {
                     writer.write(String.format(
-                            "Tent,%d,%s,%.2f,%s,%d,%d,%d,%s\n",
+                            "Tent,%d,%s,%.2f,%b,%d,%d,%d,%b\n",
                             tent.getId(),
                             tent.getName(),
                             tent.getPrice(),
@@ -63,7 +63,7 @@ public abstract class Product {
                     ));
                 } else if (product instanceof Chair chair) {
                     writer.write(String.format(
-                            "Chair,%d,%s,%.2f,%s,%d,%d,%d,%s\n",
+                            "Chair,%d,%s,%.2f,%b,%d,%d,%d,%b\n",
                             chair.getId(),
                             chair.getName(),
                             chair.getPrice(),
@@ -75,7 +75,7 @@ public abstract class Product {
                     ));
                 } else if (product instanceof Laptop laptop) {
                     writer.write(String.format(
-                            "Laptop,%d,%s,%.2f,%s,%b,%d,%d,%s\n",
+                            "Laptop,%d,%s,%.2f,%d,%b,%d,%d,%d\n",
                             laptop.getId(),
                             laptop.getName(),
                             laptop.getPrice(),
@@ -87,7 +87,7 @@ public abstract class Product {
                     ));
                 } else if (product instanceof MobilePhones phone) {
                     writer.write(String.format(
-                            "MobilePhones,%d,%s,%.2f,%b,%d,%d,%d,%s\n",
+                            "MobilePhone,%d,%s,%.2f,%b,%s,%d,%d,%d\n",
                             phone.getId(),
                             phone.getName(),
                             phone.getPrice(),
@@ -99,7 +99,7 @@ public abstract class Product {
                     ));
                 } else if (product instanceof PhoneCases phoneCase) {
                     writer.write(String.format(
-                            "PhoneCases,%d,%s,%.2f,%s,%d,%d,%d,%s\n",
+                            "PhoneCase,%d,%s,%.2f,%b,%s,%d,%d,%d\n",
                             phoneCase.getId(),
                             phoneCase.getName(),
                             phoneCase.getPrice(),
@@ -160,7 +160,7 @@ public abstract class Product {
                             Integer.parseInt(productData[7]),
                             Integer.parseInt(productData[8])
                     );
-                } else if (productType.equals("MobilePhones")) {
+                } else if (productType.equals("MobilePhone")) {
                     product = new MobilePhones(
                             Integer.parseInt(productData[1]),
                             productData[2],
@@ -171,7 +171,7 @@ public abstract class Product {
                             Integer.parseInt(productData[7]),
                             Integer.parseInt(productData[8])
                     );
-                } else if (productType.equals("PhoneCases")) {
+                } else if (productType.equals("PhoneCase")) {
                     product = new PhoneCases(
                             Integer.parseInt(productData[1]),
                             productData[2],
