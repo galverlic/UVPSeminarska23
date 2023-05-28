@@ -1,7 +1,7 @@
 Tent,1,Blue Tent,99.99,true,5,5,8,true
-Tent,2,Red Tent,79.99,false,8,3,1,false
-Chair,3,Green Chair,49.99,true,15,10,7,true
-Chair,4,Yellow Chair,39.99,false,20,8,6,false
+Tent,2,Red Tent,79.99,false,7,3,2,false
+Chair,3,Green Chair,49.99,true,true,10,10,12
+Chair,4,Yellow Chair,39.99,false,false,19,8,7
 Laptop,5,Dell Laptop,999.99,500,true,2,5,2
 Laptop,6,HP Laptop,899.99,256,false,3,4,1
 MobilePhone,7,Samsung Mobile Phone,599.99,true,Samsung,10,5,4
@@ -9,7 +9,7 @@ MobilePhone,8,iPhone Mobile Phone,899.99,false,Apple,8,3,2
 PhoneCase,9,Black Phone Case,19.99,true,Black,50,20,30
 PhoneCase,10,Red Phone Case,14.99,false,Red,30,10,20
 Tent,11,Orange Tent,89.99,false,7,2,0,true
-Chair,12,Purple Chair,29.99,false,25,15,10,true
+Chair,12,Purple Chair,29.99,true,false,25,15,10
 Laptop,13,Lenovo Laptop,799.99,128,true,5,3,2
 MobilePhone,14,Sony Mobile Phone,499.99,false,Sony,12,7,5
 PhoneCase,15,White Phone Case,24.99,false,White,40,15,25

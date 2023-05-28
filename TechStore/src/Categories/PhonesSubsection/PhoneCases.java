@@ -14,9 +14,7 @@ public class PhoneCases extends Product {
         return color;
     }
 
-    public void setColor(String color){
-        color = color;
-    }
+
     @Override
     public String toString() {
         return "Phone Case{" +

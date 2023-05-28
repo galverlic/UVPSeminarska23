@@ -14,9 +14,6 @@ public class MobilePhones extends Product {
         return brand;
     }
 
-    public void brand(String brand){
-        brand = brand;
-    }
 
     @Override
     public String toString() {

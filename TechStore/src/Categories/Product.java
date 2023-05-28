@@ -14,9 +14,9 @@ public abstract class Product {
     private final int id;
     private final String name;
     private final double price;
-    private boolean isDiscounted;
+    private final boolean isDiscounted;
     private int quantityInStore;
-    private int quantityInWarehouse;
+    private final int quantityInWarehouse;
     private int quantitySold;
 
     private double totalRevenue;
@@ -63,15 +63,15 @@ public abstract class Product {
                     ));
                 } else if (product instanceof Chair chair) {
                     writer.write(String.format(
-                            "Chair,%d,%s,%.2f,%b,%d,%d,%d,%b\n",
+                            "Chair,%d,%s,%.2f,%b,%b,%d,%d,%d\n",
                             chair.getId(),
                             chair.getName(),
                             chair.getPrice(),
+                            chair.isFoldable(),
                             chair.getIsDiscounted(),
                             chair.getQuantityInStore(),
                             chair.getQuantityInWarehouse(),
-                            chair.getQuantitySold(),
-                            chair.isFoldable()
+                            chair.getQuantitySold()
                     ));
                 } else if (product instanceof Laptop laptop) {
                     writer.write(String.format(
@@ -121,9 +121,10 @@ public abstract class Product {
 
     public static List<Product> loadProducts(String filename) {
         List<Product> products = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line = reader.readLine();
-            while (line != null) {
+        try (InputStream is = Product.class.getResourceAsStream(filename);
+             BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+            String line;
+            while ((line = br.readLine()) != null) {
                 String[] productData = line.split(",");
                 Product product = null;
                 String productType = productData[0].trim();
@@ -187,7 +188,6 @@ public abstract class Product {
                 if (product != null) {
                     products.add(product);
                 }
-                line = reader.readLine();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -215,9 +215,7 @@ public abstract class Product {
         return isDiscounted;
     }
 
-    public void setDiscounted(boolean discounted) {
-        isDiscounted = discounted;
-    }
+
 
     public int getQuantityInStore() {
         return quantityInStore;
@@ -231,9 +229,7 @@ public abstract class Product {
         return quantityInWarehouse;
     }
 
-    public void setQuantityInWarehouse(int quantityInWarehouse) {
-        this.quantityInWarehouse = quantityInWarehouse;
-    }
+
 
     public int getQuantitySold() {
         return quantitySold;

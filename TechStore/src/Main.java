@@ -11,6 +11,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
@@ -18,8 +19,7 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
 
-
-        List<Product> products = Product.loadProducts("C:\\Users\\galve\\Documents\\Project\\TechStore\\data\\products.txt");
+        List<Product> products = Product.loadProducts("/data/products.txt");
 
         List<Tent> tents = new ArrayList<>();
         List<Chair> chairs = new ArrayList<>();
@@ -55,7 +55,7 @@ public class Main {
 
         int section = scanner.nextInt();
         mainHandler.handleSectionChoice(section, tents, chairs, phones, phoneCases, laptops);
-        Product.saveProducts(products, "C:\\Users\\galve\\Documents\\Project\\TechStore\\data\\products.txt");
+        Product.saveProducts(products, "/data/products.txt");
 
 
 
