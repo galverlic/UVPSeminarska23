@@ -6,6 +6,7 @@ import Categories.Product;
 import Helpers.MainHandler;
 import Categories.ComputerElectronicsSubsection.Laptop;
 
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
 
 
         List<Product> products = Product.loadProducts("C:\\Users\\galve\\Documents\\Project\\TechStore\\data\\products.txt");
