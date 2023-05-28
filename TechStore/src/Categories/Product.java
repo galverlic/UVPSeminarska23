@@ -1,7 +1,10 @@
 package Categories;
 
+import Categories.ComputerElectronicsSubsection.Laptop;
 import Categories.OutdoorSubsection.Chair;
 import Categories.OutdoorSubsection.Tent;
+import Categories.PhonesSubsection.MobilePhones;
+import Categories.PhonesSubsection.PhoneCases;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -70,8 +73,44 @@ public abstract class Product {
                             chair.getQuantitySold(),
                             chair.isFoldable()
                     ));
+                } else if (product instanceof Laptop laptop) {
+                    writer.write(String.format(
+                            "Laptop,%d,%s,%.2f,%s,%b,%d,%d,%s\n",
+                            laptop.getId(),
+                            laptop.getName(),
+                            laptop.getPrice(),
+                            laptop.getStorageSpace(),
+                            laptop.getIsDiscounted(),
+                            laptop.getQuantityInStore(),
+                            laptop.getQuantityInWarehouse(),
+                            laptop.getQuantitySold()
+                    ));
+                } else if (product instanceof MobilePhones phone) {
+                    writer.write(String.format(
+                            "MobilePhones,%d,%s,%.2f,%b,%d,%d,%d,%s\n",
+                            phone.getId(),
+                            phone.getName(),
+                            phone.getPrice(),
+                            phone.getIsDiscounted(),
+                            phone.getBrand(),
+                            phone.getQuantityInStore(),
+                            phone.getQuantityInWarehouse(),
+                            phone.getQuantitySold()
+                    ));
+                } else if (product instanceof PhoneCases phoneCase) {
+                    writer.write(String.format(
+                            "PhoneCases,%d,%s,%.2f,%s,%d,%d,%d,%s\n",
+                            phoneCase.getId(),
+                            phoneCase.getName(),
+                            phoneCase.getPrice(),
+                            phoneCase.getIsDiscounted(),
+                            phoneCase.getColor(),
+                            phoneCase.getQuantityInStore(),
+                            phoneCase.getQuantityInWarehouse(),
+                            phoneCase.getQuantitySold()
+                    ));
                 }
-                // Add more product types as needed
+
             }
 
             writer.close();
@@ -85,7 +124,6 @@ public abstract class Product {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine();
             while (line != null) {
-
                 String[] productData = line.split(",");
                 Product product = null;
                 String productType = productData[0].trim();
@@ -107,6 +145,39 @@ public abstract class Product {
                             Double.parseDouble(productData[3]),
                             Boolean.parseBoolean(productData[4]),
                             Boolean.parseBoolean(productData[5]),
+                            Integer.parseInt(productData[6]),
+                            Integer.parseInt(productData[7]),
+                            Integer.parseInt(productData[8])
+                    );
+                } else if (productType.equals("Laptop")) {
+                    product = new Laptop(
+                            Integer.parseInt(productData[1]),
+                            productData[2],
+                            Double.parseDouble(productData[3]),
+                            Integer.parseInt(productData[4]),
+                            Boolean.parseBoolean(productData[5]),
+                            Integer.parseInt(productData[6]),
+                            Integer.parseInt(productData[7]),
+                            Integer.parseInt(productData[8])
+                    );
+                } else if (productType.equals("MobilePhones")) {
+                    product = new MobilePhones(
+                            Integer.parseInt(productData[1]),
+                            productData[2],
+                            Double.parseDouble(productData[3]),
+                            Boolean.parseBoolean(productData[4]),
+                            productData[5],
+                            Integer.parseInt(productData[6]),
+                            Integer.parseInt(productData[7]),
+                            Integer.parseInt(productData[8])
+                    );
+                } else if (productType.equals("PhoneCases")) {
+                    product = new PhoneCases(
+                            Integer.parseInt(productData[1]),
+                            productData[2],
+                            Double.parseDouble(productData[3]),
+                            Boolean.parseBoolean(productData[4]),
+                            productData[5],
                             Integer.parseInt(productData[6]),
                             Integer.parseInt(productData[7]),
                             Integer.parseInt(productData[8])
@@ -133,17 +204,12 @@ public abstract class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+
 
     public boolean getIsDiscounted() {
         return isDiscounted;
@@ -173,9 +239,7 @@ public abstract class Product {
         return quantitySold;
     }
 
-    public void setQuantitySold(int quantitySold) {
-        this.quantitySold = quantitySold;
-    }
+
 
     public void sellProduct(int quantity) {
         if (quantity <= this.quantityInStore) {
@@ -187,9 +251,7 @@ public abstract class Product {
         }
     }
 
-    public double getTotalRevenue() {
-        return this.totalRevenue;
-    }
+
     public void returnProduct(int quantity) {
         if (quantity <= this.quantitySold) {
             this.quantityInStore += quantity;

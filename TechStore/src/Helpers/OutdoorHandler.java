@@ -5,7 +5,6 @@ import Categories.OutdoorSubsection.Tent;
 
 import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
 
 public class OutdoorHandler {
     public static void handleOutdoorSubsectionChoice(Scanner scanner, int subsection, List<Tent> tents, List<Chair> chairs) {
